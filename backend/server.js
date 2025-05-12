@@ -16,7 +16,7 @@ const db = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "",
-    database: "cars"
+    database: "reactasd"
 });
 
 app.post('/regUsers', async (req, res) => {
@@ -49,7 +49,7 @@ app.post('/logUsers', async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: "Nem megfelelő a jelszó!" })
         }
-        const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, { expiresIn: "1h" });
+        const token = jwt.sign({ id: users[0].id }, process.env.SECRET_KEY, { expiresIn: "1h" });
 
         res.json({ token });
         res.status(200).json({ message: "Sikeres bejelentkezés!" });
